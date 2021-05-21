@@ -6,24 +6,28 @@ class RoundedCard extends StatelessWidget {
   final double width;
   final double radius;
   final double padding;
+  bool light;
   RoundedCard(
-      {this.children, this.height, this.width, this.radius, this.padding});
+      {this.children,
+      this.height,
+      this.width,
+      this.radius,
+      this.padding,
+      this.light = false});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: height,
       width: width,
+      margin: EdgeInsets.only(top: padding ?? 12.0),
       decoration: BoxDecoration(
-          color: Theme.of(context).accentColor,
+          color: Color.fromRGBO(178, 197, 222, light ? 0.6 : 0.99),
           borderRadius: BorderRadius.circular(radius ?? 46)),
-      alignment: Alignment.topCenter,
-      child: Padding(
-        padding: EdgeInsets.only(top: padding ?? 12.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: children,
-        ),
+      alignment: Alignment.center,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: children,
       ),
     );
   }

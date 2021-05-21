@@ -48,6 +48,7 @@ class CommentPage extends StatelessWidget {
           slivers: [
             CupertinoSliverNavigationBar(
               backgroundColor: Color(0xFFEBEFF7),
+              border: null,
               largeTitle: Row(children: [
                 Text('Комментарии',
                     style: headingTextSyle(context).copyWith(fontSize: 24)),
@@ -61,7 +62,9 @@ class CommentPage extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.only(left: 16, top: 8.0),
+                padding: const EdgeInsets.only(
+                  left: 15,
+                ),
                 child: GestureDetector(
                   child: Row(
                     children: [
@@ -77,7 +80,7 @@ class CommentPage extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.only(left: 15.0, right: 14, top: 20),
+                padding: const EdgeInsets.only(left: 15.0, right: 14, top: 40),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -97,6 +100,7 @@ class CommentPage extends StatelessWidget {
                                       child: CupertinoTextField(
                                         padding: EdgeInsets.only(left: 20),
                                         placeholder: 'Написать комментарий',
+                                        style: Theme.of(context).textTheme.bodyText2,
                                         decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(25),
@@ -111,9 +115,10 @@ class CommentPage extends StatelessWidget {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 15.0, bottom: 30),
+                          padding: const EdgeInsets.only(
+                              top: 15.0, bottom: 30, left: 16, right: 20),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: ['😍', '😧', '😏', '😳', '🤗', '🤗']
                                 .map((e) => GestureDetector(
                                       child: Text(

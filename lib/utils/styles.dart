@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 TextStyle headingTextSyle(BuildContext context) =>
     Theme.of(context).textTheme.headline5.copyWith(
         fontWeight: FontWeight.bold,
-        fontSize: 30,
-        height: 0.6,
+        fontSize: 25,
+        height: 1.2,
         color: Color(0xFF07122F));
 
 TextStyle userNameStyle(BuildContext context) =>

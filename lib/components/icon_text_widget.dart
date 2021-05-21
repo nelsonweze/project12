@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IconText extends StatelessWidget {
-  final IconData icon;
+  final Widget icon;
   final String text;
   IconText({this.icon, this.text});
 
@@ -10,7 +10,7 @@ class IconText extends StatelessWidget {
     return Container(
       child: Row(
         children: [
-          Icon(icon),
+          icon,
           Padding(
             padding: EdgeInsets.only(left: 8),
             child: Text(text,),

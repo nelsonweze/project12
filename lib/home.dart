@@ -2,6 +2,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:project12/comment.dart';
 import 'package:project12/components/rounded_card.dart';
+import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:project12/utils/utils.dart';
 import 'components/components.dart';
 import 'utils/styles.dart';
 
@@ -32,6 +35,7 @@ class MyHomePage extends StatelessWidget {
                       width: 46,
                       radius: 16,
                       padding: 14,
+                      light: true,
                       children: [
                         Icon(Icons.arrow_back_ios_rounded,
                             color: Colors.black, size: 16)
@@ -43,14 +47,33 @@ class MyHomePage extends StatelessWidget {
                     child: RoundedCard(
                       height: 46,
                       width: 176,
-                      padding: 10,
+                      padding: 8,
+                      light: true,
                       children: [
-                        Icon(Icons.thumb_up_outlined,
-                            size: 28, color: Colors.black),
-                        Icon(Icons.bookmark_border_rounded,
-                            size: 28, color: Colors.black),
-                        Icon(Icons.upload_outlined,
-                            size: 28, color: Colors.black),
+                        IconButton(
+                          icon: SvgPicture.asset(
+                            'assets/thumbs-up-thin.svg',
+                            color: Color(0xFF15243C),
+                            height: 22,
+                          ),
+                          onPressed: () {},
+                        ),
+                        IconButton(
+                          icon: SvgPicture.asset(
+                            'assets/save-thin.svg',
+                            color: Color(0xFF15243C),
+                            height: 22,
+                          ),
+                          onPressed: () {},
+                        ),
+                        IconButton(
+                          icon: SvgPicture.asset(
+                            'assets/upload-share-thin.svg',
+                            color: Color(0xFF15243C),
+                            height: 22,
+                          ),
+                          onPressed: () {},
+                        )
                       ],
                     ),
                   )
@@ -61,8 +84,8 @@ class MyHomePage extends StatelessWidget {
               child: Stack(
                 children: [
                   Container(
-                    height: 450,
                     width: double.infinity,
+                    height: 450,
                     child: Image(
                       image: AssetImage('assets/background_pic.png'),
                       fit: BoxFit.cover,
@@ -70,49 +93,71 @@ class MyHomePage extends StatelessWidget {
                   ),
                   Positioned(
                     bottom: 0,
-                    top: 300,
-                    child: ClipRRect(
+                    child: BlurryContainer(
+                      blur: 5,
+                      padding: EdgeInsets.zero,
+                      borderRadius: BorderRadius.zero,
+                      child: Container(
+                        height: 80,
+                        color: primarySwatch.shade50.withOpacity(0.6),
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    child: BlurryContainer(
+                      padding: EdgeInsets.zero,
+                      blur: 15,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20)),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 20.0, sigmaY: 20.0, tileMode: TileMode.mirror),
+                      width: MediaQuery.of(context).size.width,
+                      child: Container(
+                        color: Color.fromRGBO(219, 229, 242, 0.7),
+                        padding: EdgeInsets.only(top: 45, left: 16, bottom: 8),
                         child: Container(
-                          width: MediaQuery.of(context).size.width,
-                          color: Color.fromRGBO(219, 229, 242, 0.6),
-                          padding: EdgeInsets.only(top: 45, left: 16),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.5,
-                            child: Text('''Задержка 
-                                   психоречевого 
-                                   развития у ребенка''',
-                                textAlign: TextAlign.left,
-                                style: headingTextSyle(context)),
-                          ),
+                          width: MediaQuery.of(context).size.width * 0.5,
+                          child: Text(
+                              "Задержка \nпсихоречевого \nразвития у ребенка",
+                              textAlign: TextAlign.start,
+                              style: headingTextSyle(context).copyWith(
+                                fontSize: 27,
+                              )),
                         ),
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
             SliverToBoxAdapter(
-              child: Container(
-                color: Theme.of(context).accentColor.withOpacity(0.4),
-                width: MediaQuery.of(context).size.width * 0.6,
-                padding: EdgeInsets.only(left: 16, right: 16, top: 12),
-                child: Row(
-                  children: [
-                    IconText(icon: Icons.visibility_outlined, text: '54 615'),
-                    IconText(icon: Icons.comment_bank_outlined, text: '123'),
-                    IconText(icon: Icons.schedule_outlined, text: '9 мин')
-                  ],
-                ),
-              ),
+              child: BlurryContainer(
+                  blur: 600,
+                  padding: EdgeInsets.zero,
+                  borderRadius: BorderRadius.zero,
+                  child: Container(
+                    color: primarySwatch.shade300.withOpacity(0.5),
+                    padding: EdgeInsets.only(left: 16, right: 16, top: 12),
+                    child: Row(
+                      children: [
+                        IconText(
+                            icon:
+                                SvgPicture.asset('assets/visibility-icon.svg'),
+                            text: '54 615'),
+                        IconText(
+                            icon: SvgPicture.asset('assets/comment-thin.svg'),
+                            text: '123'),
+                        IconText(
+                            icon: SvgPicture.asset('assets/clock.svg'),
+                            text: '9 мин')
+                      ],
+                    ),
+                  )),
             ),
             SliverToBoxAdapter(
               child: Container(
-                color: Theme.of(context).accentColor.withOpacity(0.4),
+                color: Theme.of(context).accentColor.withOpacity(0.5),
                 padding: EdgeInsets.only(top: 12, left: 16),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -144,9 +189,9 @@ class MyHomePage extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: Container(
-                color: Theme.of(context).accentColor.withOpacity(0.4),
+                color: Theme.of(context).accentColor.withOpacity(0.5),
                 padding:
-                    EdgeInsets.only(top: 60, left: 16, bottom: 20, right: 14),
+                    EdgeInsets.only(top: 40, left: 16, bottom: 20, right: 14),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -156,12 +201,18 @@ class MyHomePage extends StatelessWidget {
                         text: TextSpan(children: [
                           TextSpan(
                               text: 'Автор публикации:',
-                              style: TextStyle(color: Colors.black)),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  .copyWith(fontSize: 15, letterSpacing: 0)),
                           TextSpan(
                               text: ' Татьяна Андреева, педагог-психолог',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold))
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyText2
+                                  .copyWith(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold))
                         ]),
                       ),
                     ),
@@ -174,10 +225,11 @@ class MyHomePage extends StatelessWidget {
                     ),
                     Container(
                       padding: EdgeInsets.only(top: 16, bottom: 16),
+                      width: MediaQuery.of(context).size.width * 0.7,
                       child: Text(
                         'Задержка психоречевого развития у ребенка',
                         style: headingTextSyle(context)
-                            .copyWith(fontSize: 20, height: 1.2),
+                            .copyWith(fontSize: 20, height: 1.3),
                       ),
                     ),
                     Container(
@@ -229,30 +281,30 @@ class MyHomePage extends StatelessWidget {
         width: 304,
         children: [
           IconButton(
-            icon: Icon(
-              Icons.thumb_up_outlined,
-              size: 28,
+            icon: SvgPicture.asset(
+              'assets/thumb-icon.svg',
+              color: Color(0xFF15243C),
             ),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(
-              Icons.bookmark_border_rounded,
-              size: 28,
+            icon: SvgPicture.asset(
+              'assets/bookmark-save.svg',
+              color: Color(0xFF15243C),
             ),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(
-              Icons.upload_outlined,
-              size: 28,
+            icon: SvgPicture.asset(
+              'assets/upload-share.svg',
+              color: Color(0xFF15243C),
             ),
             onPressed: () {},
           ),
           IconButton(
-            icon: Icon(
-              Icons.comment_outlined,
-              size: 28,
+            icon: SvgPicture.asset(
+              'assets/comment-icon.svg',
+              color: Color(0xFF15243C),
             ),
             onPressed: () => Navigator.push(context,
                 MaterialPageRoute(builder: (context) => CommentPage())),
