@@ -57,7 +57,7 @@ class CommentPage extends StatelessWidget {
                 ),
                 Text('28',
                     style: headingTextSyle(context)
-                        .copyWith(color: Colors.grey, fontSize: 20))
+                        .copyWith(color: Colors.grey[600], fontSize: 22, height: 1.4))
               ]),
             ),
             SliverToBoxAdapter(

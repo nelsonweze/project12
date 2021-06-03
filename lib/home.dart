@@ -94,12 +94,12 @@ class MyHomePage extends StatelessWidget {
                   Positioned(
                     bottom: 0,
                     child: BlurryContainer(
-                      blur: 5,
+                      blur: 500,
                       padding: EdgeInsets.zero,
                       borderRadius: BorderRadius.zero,
                       child: Container(
-                        height: 80,
-                        color: primarySwatch.shade50.withOpacity(0.6),
+                        height: 40,
+                        color: primarySwatch.shade200,
                         width: MediaQuery.of(context).size.width,
                       ),
                     ),
@@ -108,14 +108,14 @@ class MyHomePage extends StatelessWidget {
                     bottom: 0,
                     child: BlurryContainer(
                       padding: EdgeInsets.zero,
-                      blur: 15,
+                      blur: 25,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20)),
                       width: MediaQuery.of(context).size.width,
                       child: Container(
-                        color: Color.fromRGBO(219, 229, 242, 0.7),
-                        padding: EdgeInsets.only(top: 45, left: 16, bottom: 8),
+                        color: Color.fromRGBO(219, 229, 242, 0.6),
+                        padding: EdgeInsets.only(top: 45, left: 16, bottom: 24),
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.5,
                           child: Text(
@@ -133,12 +133,12 @@ class MyHomePage extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: BlurryContainer(
-                  blur: 600,
+                  blur: 6000000,
                   padding: EdgeInsets.zero,
                   borderRadius: BorderRadius.zero,
                   child: Container(
-                    color: primarySwatch.shade300.withOpacity(0.5),
-                    padding: EdgeInsets.only(left: 16, right: 16, top: 12),
+                    color: primarySwatch.shade400.withOpacity(0.4),
+                    padding: EdgeInsets.only(left: 16, right: 16, top: 6),
                     child: Row(
                       children: [
                         IconText(
